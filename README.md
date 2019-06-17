@@ -15,9 +15,9 @@ A brief intro is here, but check INSTALL for more details.
     2. The cache anomalies measure the cache size during this step, so it's
        important to run configure on the node that the anomaly is going to
        execute on.
-    3. LD_LIBRARY_PATH and CFLAGS should indicate the location of shmem.h and
-       relevant libraries. If using OpenMPI, use oshcc to compile (add
-       CC=oshcc to `configure` arguments) and oshrun to run.
+    3. `LD_LIBRARY_PATH` and `CFLAGS` should indicate the location of `shmem.h` and
+       relevant libraries. If using OpenMPI, use `oshcc` to compile (add
+       `CC=oshcc` to `configure` arguments) and oshrun to run.
 4. `make`
 5. `make install`
 
