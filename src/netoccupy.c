@@ -123,10 +123,25 @@ int netoccupy(int argc, char *argv[])
         } else if (second_host == -1 && all_hosts[i] != first_host) {
             second_host = all_hosts[i];
         } else if (all_hosts[i] != first_host && all_hosts[i] != second_host) {
-            fprintf(stderr, "Please run with only 2 nodes. More nodes require multiple mpi jobs.\n");
+	    if (myid == 0) {
+                fprintf(stderr, "Please run with only 2 nodes. More nodes require multiple mpi jobs.\n");
+	    }
             return -1;
         }
     }
+
+    if (first_host == -1) {
+	if (myid == 0) {
+	    fprintf(stderr, "Problem aquiring node number for first node, please fix hostname parsing.\n");
+	}
+	return -1;
+    } else if (second_host == -1) {
+	if (myid == 0) {
+            fprintf(stderr, "Please run with exactly 2 nodes. Less nodes would create no network contention.\n");
+	}
+	return -1;
+    }
+
     if (second_host < first_host) {
         int tmp = second_host;
         second_host = first_host;
