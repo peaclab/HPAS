@@ -5,19 +5,19 @@ Installation
 ------------
 A brief intro is here, but check INSTALL for more details.
 1. Install C/C++ compilers, GNU autotools
-    1.1. Install shmem if you wish to use netoccupy anomaly. OpenMPI typically
-    includes a shmem compiler.
+    1. Install shmem if you wish to use netoccupy anomaly. OpenMPI typically
+       includes a shmem compiler.
 2. If checking out from git, generate the configure script by running the
    command `./autogen.sh`
 3. `./configure`
-    3.1. Configure has some options that can be explored, such as prefix
-        directory, see `./configure --help`
-    3.2. The cache anomalies measure the cache size during this step, so it's
-        important to run configure on the node that the anomaly is going to
-        execute on.
-    3.3. LD_LIBRARY_PATH and CFLAGS should indicate the location of shmem.h and
-        relevant libraries. If using OpenMPI, use oshcc to compile (add
-        CC=oshcc to `configure` arguments) and oshrun to run.
+    1. Configure has some options that can be explored, such as prefix
+       directory, see `./configure --help`
+    2. The cache anomalies measure the cache size during this step, so it's
+       important to run configure on the node that the anomaly is going to
+       execute on.
+    3. LD_LIBRARY_PATH and CFLAGS should indicate the location of shmem.h and
+       relevant libraries. If using OpenMPI, use oshcc to compile (add
+       CC=oshcc to `configure` arguments) and oshrun to run.
 4. `make`
 5. `make install`
 
