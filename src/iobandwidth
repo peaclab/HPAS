@@ -1,0 +1,84 @@
+#!/bin/bash
+
+size="1G"
+multiplier=10
+runtime=-1
+outdir="./hpas_tmp"
+nthreads=1
+start_time=0
+verbose=''
+while getopts "s:m:d:t:l:n:hv" opt
+do
+    case $opt in
+        s)
+            size="$OPTARG"
+            ;;
+        m)
+            multiplier="$OPTARG"
+            ;;
+        d)
+            runtime="$OPTARG"
+            ;;
+        l)
+            outdir="$OPTARG"
+            ;;
+        t)
+            start_time="$OPTARG"
+            ;;
+        n)
+            nthreads="$OPTARG"
+            ;;
+        v)
+            verbose='1'
+            ;;
+        *)
+            echo "Usage: iobandwidth [OPTIONS]"
+            echo "IO Bandwidth anomaly."
+            echo ""
+            echo "-s (=1G)           Block size (in bytes)"
+            echo "-m (=10)           Multiplier for block size"
+            echo "-d (=-1)           Duration of anomaly (in seconds)"
+            echo "-l (='./hpas_tmp') Location of output folder"
+            echo "-t (=0)            Start time (in seconds)"
+            echo "-n (=1)            Number of simultaneous threads of I/O"
+            echo "-h                 Print this message"
+            echo "-v                 Verbose mode"
+            exit 1
+            ;;
+    esac
+done
+
+trap  'exit 1' SIGINT
+outdir=$outdir/$(uuidgen)
+sleep $start_time
+SECONDS=0
+mkdir -p $outdir
+
+function move_files () {
+    local outdir=$1
+    dd if=/dev/urandom of=$outdir/tmp bs=$size count=$multiplier
+    dd if=$outdir/tmp of=$outdir/tmp1 bs=$size count=$multiplier
+    dd if=$outdir/tmp1 of=$outdir/tmp2 bs=$size count=$multiplier
+    rm $outdir/tmp $outdir/tmp1 $outdir/tmp2
+}
+
+echo $(date)
+echo $(printf "Starting io anomaly for %s x %s bytes, at %s for %d seconds" \
+       $multiplier $size $outdir $runtime)
+
+
+while [[ "$runtime" -le "0" || "$SECONDS" -le "$runtime" ]]
+do
+    for i in $(seq $nthreads)
+    do
+        mkdir -p $outdir/$i
+        move_files $outdir/$i &
+        pids[$i]=$!
+    done
+    for i in $(seq $nthreads)
+    do
+        wait ${pids[$i]}
+    done
+    [[ $verbose ]] && echo "Looping"
+done
+rm -r $outdir
