@@ -134,7 +134,7 @@ int netoccupy(int argc, char *argv[])
     }
     int counter = 0;
     int pair_no = 0;
-    if(hostnum == first_host) {
+    if(*hostnum == first_host) {
         for (i=0; i<numprocs; i++) {
             if (i == myid) {
                 pair_no = counter;
@@ -177,7 +177,7 @@ int netoccupy(int argc, char *argv[])
 
     shmem_barrier_all();
     set_duration(duration);
-    if(hostnum == first_host)
+    if(*hostnum == first_host)
     {
         while (timer_flag) {
             for(i = 0; i < loop; i++) {
