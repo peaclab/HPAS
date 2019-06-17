@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+#include <errno.h>
 #include <getopt.h>
 #include <stdbool.h>
 #include <fcntl.h>
@@ -89,6 +90,7 @@ int iometadata(int argc, char *argv[])
         location_size = 11;
         location = (char *) malloc(location_size);
         strncpy(location, "./hpas_tmp", location_size);
+	mkdir(location, 0700);
     }
     location[location_size - 1] = '\0';
     char *foldername;
@@ -102,13 +104,18 @@ int iometadata(int argc, char *argv[])
         filenames[ite] = malloc(location_size + 10);
     }
 
-    foldername = mkdtemp(foldername);
+    char *tempdir = mkdtemp(foldername);
+    if (tempdir == NULL) {
+        fprintf(stderr, "mkdtemp failed for template %s with the error: %s\n", 
+		foldername, strerror(errno));
+	return -1;
+    }
     time_t rawtime;
     struct tm *timeinfo;
     time(&rawtime);
     timeinfo = localtime(&rawtime);
     printf("%sStarting metadata anomaly with d=%f, l=%s\n",
-            asctime(timeinfo), duration, foldername);
+            asctime(timeinfo), duration, tempdir);
     int write_result;
     int k = 0;
     int i = 0;
@@ -117,7 +124,7 @@ int iometadata(int argc, char *argv[])
     set_duration(duration);
     while(timer_flag)
     {
-        sprintf(filename, "%s/%d", foldername, k % 10);
+        sprintf(filename, "%s/%d", tempdir, k % 10);
         remove(filename);
         // O_RDONLY: Read only
         // O_CREAT: Create file if doesn't exist
@@ -148,7 +155,7 @@ int iometadata(int argc, char *argv[])
         close(fds[i]);
         remove(filenames[i]);
     }
-    rmdir(foldername);
+    rmdir(tempdir);
     for (i=0; i<10; i++) {
         free(filenames[i]);
     }
