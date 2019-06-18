@@ -31,7 +31,7 @@ prints detailed information about command line arguments.
 For detailed evaluation of anomalies, refer to our paper at ICPP'19, a copy is
 included in `docs/ates_icpp19.pdf`.
 
-## Note for `netoccupy`
+#### Note for `netoccupy`
 The `netoccupy` anomaly assumes that each node has a hostname of the form e.g.,
 `nid00020`, such that each node name is `nid` followed by a unique integer. The
 relevant line within `src/netoccupy.c` should be changed to support different
