@@ -80,12 +80,12 @@ Processing (ICPP 2019).
 Bibtex entry:
 ```
 @inproceedings{ates:2019,
-    author = {Emre Ates and Yijia Zhang and Burak Aksar and Jim Brandt and Vitus
-              J. Leung and Manuel Egele and Ayse K. Coskun},
+    author = {Emre Ates and Yijia Zhang and Burak Aksar and Jim Brandt and
+              Vitus J. Leung and Manuel Egele and Ayse K. Coskun},
     title = {{HPAS}: An {HPC} Performance Anomaly Suite for Reproducing
              Performance Variations},
-    booktitle = {48th International Conference on Parallel Processing (ICPP
-                 2019)},
+    booktitle = {48th International Conference on Parallel Processing
+                 (ICPP 2019)},
     year = {2019},
 }
 ```
