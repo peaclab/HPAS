@@ -1,6 +1,8 @@
 HPC Performance Anomaly Suite (HPAS)
 ====================================
 
+This repository holds the anomaly suite presented in the paper "HPAS:
+
 Installation
 ------------
 A brief intro is here, but check INSTALL for more details.
@@ -66,3 +68,24 @@ at GitHub, and we can work together to include the anomalies.
 
 For any bugs/problems, please open a pull request if you have a fix, issue
 otherwise.
+
+Using
+-----
+
+If you use this anomaly suite for a publication, please cite the following
+paper: Ates et al., "HPAS: An HPC Performance Anomaly Suite for Reproducing
+Performance Variations". To appear in 48th International Conference on Parallel
+Processing (ICPP 2019).
+
+Bibtex entry:
+```
+@inproceedings{ates:2019,
+    author = {Emre Ates and Yijia Zhang and Burak Aksar and Jim Brandt and Vitus
+              J. Leung and Manuel Egele and Ayse K. Coskun},
+    title = {{HPAS}: An {HPC} Performance Anomaly Suite for Reproducing
+             Performance Variations},
+    booktitle = {48th International Conference on Parallel Processing (ICPP
+                 2019)},
+    year = {2019},
+}
+```
