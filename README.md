@@ -4,7 +4,7 @@ HPC Performance Anomaly Suite (HPAS)
 This repository holds the anomaly suite presented in the paper "HPAS: An HPC
 Performance Anomaly Suite for Reproducing Performance Variations". 
 
-[Paper PDF](Link will come here)
+[Paper PDF](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)
 
 Installation
 ------------
