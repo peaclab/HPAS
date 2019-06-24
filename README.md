@@ -2,7 +2,9 @@ HPC Performance Anomaly Suite (HPAS)
 ====================================
 
 This repository holds the anomaly suite presented in the paper "HPAS: An HPC
-Performance Anomaly Suite for Reproducing Performance Variations".
+Performance Anomaly Suite for Reproducing Performance Variations". 
+
+[Paper PDF](Link will come here)
 
 Installation
 ------------
