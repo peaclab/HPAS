@@ -101,6 +101,11 @@ Bibtex entry:
 }
 ```
 
+License
+-----
+
+HPAS is licensed under the [BSD 3-Clause license](https://github.com/peaclab/HPAS/blob/master/LICENSE).
+
 References
 -----
 
