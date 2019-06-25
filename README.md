@@ -1,10 +1,18 @@
 HPC Performance Anomaly Suite (HPAS)
 ====================================
 
-This repository holds the anomaly suite presented in the paper "HPAS: An HPC
-Performance Anomaly Suite for Reproducing Performance Variations". 
+This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)"[1]. HPAS, consists of a set of synthetic anomalies that reproduce common root causes of performance variations in supercomputers:
 
-[Paper PDF](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)
+* CPU contention
+* Cache evictions
+* Memory bandwidth interference
+* Memory intensive processes
+* Memory leaks
+* Network contention
+* I/O contention 
+
+These anomalies use processes that run in user space; thus, it does not require any hardware or kernel modification. For installation details please see below. 
+
 
 Installation
 ------------
@@ -72,7 +80,7 @@ at GitHub, and we can work together to include the anomalies.
 For any bugs/problems, please open a pull request if you have a fix, issue
 otherwise.
 
-Using
+Using HPAS
 -----
 
 If you use this anomaly suite for a publication, please cite the following
@@ -92,3 +100,8 @@ Bibtex entry:
     year = {2019},
 }
 ```
+
+References
+-----
+
+[1] Emre Ates, Yijia Zhang, Burak Aksar, Jim Brandt, Vitus J. Leung, Manuel Egele, and Ayse K. Coskun. HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations. In International Conference on Parallel Processing (ICPP), Aug. 2019
