@@ -1,7 +1,11 @@
 HPC Performance Anomaly Suite (HPAS)
 ====================================
 
-This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)"[1]. It consists of a set of synthetic anomalies that reproduce common root causes of performance variations in supercomputers:
+This repository holds the anomaly suite presented in the paper "[HPAS: An HPC
+Performance Anomaly Suite for Reproducing Performance
+Variations](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)"[1].
+It consists of a set of synthetic anomalies that reproduce common root causes of
+performance variations in supercomputers:
 
 * CPU contention
 * Cache evictions
@@ -9,10 +13,11 @@ This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Pe
 * Memory intensive processes
 * Memory leaks
 * Network contention
-* I/O metadata server contention 
+* I/O metadata server contention
 * I/O storage server contention
 
-These anomalies use processes that run in user space; thus do not require any hardware or kernel modification. For installation details please see below. 
+These anomalies use processes that run in user space; thus do not require any
+hardware or kernel modification. For installation details please see below.
 
 
 Installation
@@ -29,8 +34,8 @@ A brief intro is here, but check INSTALL for more details.
     2. The cache anomalies measure the cache size during this step, so it's
        important to run configure on the node that the anomaly is going to
        execute on.
-    3. `LD_LIBRARY_PATH` and `CFLAGS` should indicate the location of `shmem.h` and
-       relevant libraries. If using OpenMPI, use `oshcc` to compile (add
+    3. `LD_LIBRARY_PATH` and `CFLAGS` should indicate the location of `shmem.h`
+       and relevant libraries. If using OpenMPI, use `oshcc` to compile (add
        `CC=oshcc` to `configure` arguments) and oshrun to run.
 4. `make`
 5. `make install`
@@ -66,8 +71,8 @@ anomaly_pid=$!
 For anomalies that stress a shared resource between nodes (I/O and network),
 `$ANOMALOUS_NODE` should be different from application nodes, and it should be
 one of the application nodes if the anomaly is a CPU, cache or memory anomaly.
-The I/O anomalies can be executed with higher `-N` (nodes) and `-n` (ranks) 
-values for more interference, and the network anomaly has to be executed 
+The I/O anomalies can be executed with higher `-N` (nodes) and `-n` (ranks)
+values for more interference, and the network anomaly has to be executed
 with `-N 2`.
 
 
@@ -103,9 +108,13 @@ Bibtex entry:
 License
 -------
 
-HPAS is licensed under the [BSD 3-Clause license](https://github.com/peaclab/HPAS/blob/master/LICENSE).
+HPAS is licensed under the [BSD 3-Clause
+license](https://github.com/peaclab/HPAS/blob/master/LICENSE).
 
 References
 ----------
 
-[1] Emre Ates, Yijia Zhang, Burak Aksar, Jim Brandt, Vitus J. Leung, Manuel Egele, and Ayse K. Coskun. HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations. In International Conference on Parallel Processing (ICPP), Aug. 2019
+[1] Emre Ates, Yijia Zhang, Burak Aksar, Jim Brandt, Vitus J. Leung, Manuel
+    Egele, and Ayse K. Coskun. HPAS: An HPC Performance Anomaly Suite for
+    Reproducing Performance Variations. In International Conference on Parallel
+    Processing (ICPP), Aug. 2019

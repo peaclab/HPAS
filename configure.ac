@@ -1,4 +1,4 @@
-AC_INIT([HPCAnomalySuite], [0.04], [ates@bu.edu], [hpas], [www.bu.edu/peaclab])
+AC_INIT([HPCAnomalySuite], [0.9], [ates@bu.edu], [hpas], [www.bu.edu/peaclab])
 AC_CONFIG_SRCDIR([src])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
