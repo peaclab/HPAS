@@ -1,7 +1,7 @@
 HPC Performance Anomaly Suite (HPAS)
 ====================================
 
-This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)"[1]. HPAS, consists of a set of synthetic anomalies that reproduce common root causes of performance variations in supercomputers:
+This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations](https://github.com/peaclab/HPAS/blob/master/docs/ates_icpp19.pdf)"[1]. It consists of a set of synthetic anomalies that reproduce common root causes of performance variations in supercomputers:
 
 * CPU contention
 * Cache evictions
@@ -9,9 +9,10 @@ This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Pe
 * Memory intensive processes
 * Memory leaks
 * Network contention
-* I/O contention 
+* I/O metadata server contention 
+* I/O storage server contention
 
-These anomalies use processes that run in user space; thus, it does not require any hardware or kernel modification. For installation details please see below. 
+These anomalies use processes that run in user space; thus do not require any hardware or kernel modification. For installation details please see below. 
 
 
 Installation
@@ -21,7 +22,7 @@ A brief intro is here, but check INSTALL for more details.
     1. Install shmem if you wish to use netoccupy anomaly. OpenMPI typically
        includes a shmem compiler.
 2. If checking out from git, generate the configure script by running the
-   command `./autogen.sh`
+   command `./autogen.sh`. For the latest release tarball, see the releases.
 3. `./configure`
     1. Configure has some options that can be explored, such as prefix
        directory, see `./configure --help`
@@ -65,8 +66,9 @@ anomaly_pid=$!
 For anomalies that stress a shared resource between nodes (I/O and network),
 `$ANOMALOUS_NODE` should be different from application nodes, and it should be
 one of the application nodes if the anomaly is a CPU, cache or memory anomaly.
-The I/O anomalies can be executed with higher `-N` and `-n` values for more
-interference, and the network anomaly has to be executed with `-N 2`.
+The I/O anomalies can be executed with higher `-N` (nodes) and `-n` (ranks) 
+values for more interference, and the network anomaly has to be executed 
+with `-N 2`.
 
 
 Contributing
@@ -81,12 +83,9 @@ For any bugs/problems, please open a pull request if you have a fix, issue
 otherwise.
 
 Using HPAS
------
+----------
 
-If you use this anomaly suite for a publication, please cite the following
-paper: Ates et al., "HPAS: An HPC Performance Anomaly Suite for Reproducing
-Performance Variations". To appear in 48th International Conference on Parallel
-Processing (ICPP 2019).
+If you use this anomaly suite for a publication, please cite [1].
 
 Bibtex entry:
 ```
@@ -102,11 +101,11 @@ Bibtex entry:
 ```
 
 License
------
+-------
 
 HPAS is licensed under the [BSD 3-Clause license](https://github.com/peaclab/HPAS/blob/master/LICENSE).
 
 References
------
+----------
 
 [1] Emre Ates, Yijia Zhang, Burak Aksar, Jim Brandt, Vitus J. Leung, Manuel Egele, and Ayse K. Coskun. HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations. In International Conference on Parallel Processing (ICPP), Aug. 2019
