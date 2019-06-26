@@ -14,6 +14,7 @@ This repository holds the anomaly suite presented in the paper "[HPAS: An HPC Pe
 
 These anomalies use processes that run in user space; thus do not require any hardware or kernel modification. For installation details please see below. 
 
+An earlier subset of the anomalies were used as part of the papers *Tuncer et al., "Online Diagnosis of Performance Variation in HPC Systems Using Machine Learning"*[2] and  *Tuncer et al., "Diagnosing Performance Variations in HPC Applications Using Machine Learning"*[3].
 
 Installation
 ------------
@@ -109,3 +110,8 @@ References
 ----------
 
 [1] Emre Ates, Yijia Zhang, Burak Aksar, Jim Brandt, Vitus J. Leung, Manuel Egele, and Ayse K. Coskun. HPAS: An HPC Performance Anomaly Suite for Reproducing Performance Variations. In International Conference on Parallel Processing (ICPP), Aug. 2019
+
+[2]  Ozan Tuncer, Emre Ates, Yijia Zhang, Ata Turk, Jim Brandt, Vitus J. Leung, Manuel Egele, and Ayse K. Coskun. Online Diagnosis of Performance Variation in HPC Systems Using Machine Learning, in IEEE Transactions on Parallel and Distributed Systems (TPDS), vol. 30, no. 4, pp. 883-896, April 2019.
+
+[3] Ozan Tuncer, Emre Ates, Yijia Zhang, Ata Turk, Jim Brandt, Vitus Leung, Manuel Egele, and Ayse K. Coskun. Diagnosing Performance Variations in HPC Applications using Machine Learning. In International Supercomputing Conference, ISC-HPC 2017., pp. 355-373, June 2017. Gauss Award.
+
