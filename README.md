@@ -52,6 +52,24 @@ The `netoccupy` anomaly assumes that each node has a hostname of the form e.g.,
 relevant line within `src/netoccupy.c` should be changed to support different
 node naming conventions.
 
+### Comparison with anomalies from [2] and [3]
+In the 2017 ISC paper [3], and the 2019 TPDS paper [2] an earlier version of the anomaly suite was used.
+The following table describes how each anomaly corresponds to the ones in the suite.
+
+| Subsystem | HPAS Anomaly | Anomaly from [2] | Anomaly from [3] |
+| --------- | ------------ | ---------------- | -----------------|
+| CPU       | cpuoccupy    | dial             | dial             |
+| Cache     | cachecopy    | dcopy            | dcopy, ddot      |
+| Memory    | memleak      | leak             | leak             |
+| Memory    | memeater     | memeater         | memeater         |
+| Memory    | membw        | N/A              | N/A              |
+| Network   | netoccupy    | N/A              | N/A              |
+| Network   | N/A          | linkclog         | N/A              |
+| I/O       | iobandwidth  | N/A              | N/A              |
+| I/O       | iometadata   | N/A              | N/A              |
+
+In [2], `linkclog` was using wrappers around MPI calls to emulate network contention, whereas `netoccupy`
+creates actual network contention by sending/receiving many messages, so they are not equivalent.
 
 Usage of Anomalies
 ------------------
