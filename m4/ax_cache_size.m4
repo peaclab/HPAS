@@ -61,19 +61,10 @@ AC_DEFUN([AX_CACHE_SIZE],
       ax_l3_size=$CPU0_L3_CACHE
 
     else
-      AC_MSG_WARN(Using untested method for cache size determination)
-      #Or use CPUID
-      if test $ax_xpu_vendor != "Intel"; then
-        AX_GCC_X86_CPUID(0x80000005) # For L1 cache (not available on intel !!!)
-
-        l1_hexval=$(( 16#`echo $ax_cv_gcc_x86_cpuid_0x80000005 | cut -d ":" -f 4`))
-        ax_l1_size=$(($l1_hexval >> 24))
-      fi
-
-      AX_GCC_X86_CPUID(0x80000006) # For L2 cache
-
-      l2_hexval=$(( 16#`echo $ax_cv_gcc_x86_cpuid_0x80000006 | cut -d ":" -f 3`))
-      ax_l2_size=$(($l2_hexval >> 16))
+      AC_MSG_WARN(Using values hard-coded in m4/ax_cache_size.m4)
+      ax_l1_size=512K
+      ax_l2_size=1024K
+      ax_l3_size=8192K
     fi
 
     # Keep only digits if there is a unit (ie 1024K -> 1024) and convert in Bytes
