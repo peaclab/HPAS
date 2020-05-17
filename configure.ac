@@ -19,6 +19,12 @@ have_shmem=no
 AC_CHECK_HEADERS([shmem.h], [have_shmem=yes],
                  [AC_MSG_WARN(["shmem.h not found, not compiling netoccupy"])])
 AM_CONDITIONAL([HAVE_SHMEM], [test "$have_shmem" = "yes"])
+
+have_xmm=no
+AC_CHECK_HEADERS([xmmintrin.h], [have_xmm=yes],
+                 [AC_MSG_WARN(["xmmintrin.h not found, not compiling membw"])])
+AM_CONDITIONAL([HAVE_XMM], [test "$have_xmm" = "yes"])
+
 AX_CACHE_SIZE
 AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])
 AC_CONFIG_FILES([Makefile])
