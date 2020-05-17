@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         return memeater(argc - 1, &argv[1]);
     }
     if (strcmp(argv[1], "membw") == 0) {
-#ifndef HAVE_XMM_H
+#ifndef HAVE_XMMINTRIN_H
         printf("Please compile with xmmintrin.h to get memory bandwidth anomaly.\n");
 #else
         return membw(argc - 1, &argv[1]);
