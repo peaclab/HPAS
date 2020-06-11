@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         return cpuoccupy(argc - 1, &argv[1]);
     }
     if (strcmp(argv[1], "netoccupy") == 0) {
-#ifndef HAVE_SHMEM_H
+#if HAVE_SHMEM != 1
         printf("Please compile with SHMEM to get network contention anomaly.\n");
         return 0;
 #else

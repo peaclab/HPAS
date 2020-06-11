@@ -16,13 +16,18 @@ then
 fi
 
 have_shmem_h=no
-AC_CHECK_HEADERS([shmem.h], [have_shmem=yes],
-                 [AC_MSG_WARN(["shmem.h not found, not compiling netoccupy"])])
+AC_CHECK_HEADERS([shmem.h], [have_shmem_h=yes],
+                 [AC_MSG_WARN(["shmem.h not found"])])
 have_shmem_lib=no
 AC_SEARCH_LIBS([shmem_init], [shmem], [have_shmem_lib=yes],
-               [AC_MSG_WARN(["shmem_init not found, not compiling netoccupy"])])
+               [AC_MSG_WARN(["shmem_init not found"])])
 
-AM_CONDITIONAL([HAVE_SHMEM], [test "$have_shmem_h" = "yes" && "$have_shmem_lib" = "yes"])
+AM_CONDITIONAL([HAVE_SHMEM], [test "$have_shmem_h" = "yes" && test "$have_shmem_lib" = "yes"])
+AC_DEFINE([HAVE_SHMEM], [], ["Have SHMEM"])
+AS_IF([test "$have_shmem_h" = "yes" && test "$have_shmem_lib" = "yes"],
+      [AC_DEFINE([HAVE_SHMEM], [1])],
+      [AC_DEFINE([HAVE_SHMEM], [0])
+       AC_MSG_WARN(["not compiling netoccupy"])])
 
 have_xmm=no
 AC_CHECK_HEADERS([xmmintrin.h], [have_xmm=yes],
