@@ -15,10 +15,14 @@ then
     LDFLAGS+=' -dynamic '
 fi
 
-have_shmem=no
+have_shmem_h=no
 AC_CHECK_HEADERS([shmem.h], [have_shmem=yes],
                  [AC_MSG_WARN(["shmem.h not found, not compiling netoccupy"])])
-AM_CONDITIONAL([HAVE_SHMEM], [test "$have_shmem" = "yes"])
+have_shmem_lib=no
+AC_SEARCH_LIBS([shmem_init], [shmem], [have_shmem_lib=yes],
+               [AC_MSG_WARN(["shmem_init not found, not compiling netoccupy"])])
+
+AM_CONDITIONAL([HAVE_SHMEM], [test "$have_shmem_h" = "yes" && "$have_shmem_lib" = "yes"])
 
 have_xmm=no
 AC_CHECK_HEADERS([xmmintrin.h], [have_xmm=yes],
